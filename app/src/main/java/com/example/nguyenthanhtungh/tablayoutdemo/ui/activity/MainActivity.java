@@ -10,30 +10,28 @@ import com.example.nguyenthanhtungh.tablayoutdemo.R;
 import com.example.nguyenthanhtungh.tablayoutdemo.ui.adapter.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    private PagerAdapter pagerAdapter;
-    private TabLayout tabLayout;
     private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();
+        initViewPager();
+        initTabLayout();
     }
 
-    private void initViews() {
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        pagerAdapter = new PagerAdapter(fragmentManager);
-
-        viewPager.setAdapter(pagerAdapter);
+    private void initTabLayout() {
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(R.drawable.ic_launcher_background);
         }
     }
 
+    private void initViewPager() {
+        viewPager = findViewById(R.id.view_pager);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        PagerAdapter pagerAdapter = new PagerAdapter(this, fragmentManager);
+        viewPager.setAdapter(pagerAdapter);
+    }
 }
