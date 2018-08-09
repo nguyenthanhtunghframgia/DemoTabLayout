@@ -1,56 +1,57 @@
 package com.example.nguyenthanhtungh.tablayoutdemo.ui.adapter;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.nguyenthanhtungh.tablayoutdemo.R;
 import com.example.nguyenthanhtungh.tablayoutdemo.ui.fragment.FirstFragment;
 import com.example.nguyenthanhtungh.tablayoutdemo.ui.fragment.SecondFragment;
 import com.example.nguyenthanhtungh.tablayoutdemo.ui.fragment.ThirdFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
+    public static final int NUMBER_OF_FRAGMENT = 3;
+    private Context mContext;
 
-    public PagerAdapter(FragmentManager fm) {
+    public PagerAdapter(Context context, FragmentManager fm) {
         super(fm);
+        mContext = context;
     }
 
     @Override
     public Fragment getItem(int i) {
-        Fragment fragment = null;
         switch (i) {
             case 0:
-                fragment = new FirstFragment();
-                break;
+                return new FirstFragment();
             case 1:
-                fragment = new SecondFragment();
-                break;
+                return new SecondFragment();
             case 2:
-                fragment = new ThirdFragment();
-                break;
-
+                return new ThirdFragment();
+            default:
+                return null;
         }
-        return fragment;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return NUMBER_OF_FRAGMENT;
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String title = "";
-        switch (position){
+        String title = null;
+        switch (position) {
             case 0:
-                title = "FIRST";
+                title = mContext.getResources().getString(R.string.first_fragment_title);
                 break;
             case 1:
-                title = "SECOND";
+                title = mContext.getResources().getString(R.string.first_fragment_title);
                 break;
             case 2:
-                title = "THIRD";
+                title = mContext.getResources().getString(R.string.first_fragment_title);
                 break;
         }
         return title;

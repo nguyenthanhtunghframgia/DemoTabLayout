@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.nguyenthanhtungh.tablayoutdemo.R;
 
-public class SecondFragment extends Fragment{
-    private View view;
+public class SecondFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.second_fragment,container,false);
-        return view;
+        return inflater.inflate(R.layout.second_fragment, container, false);
     }
 }
